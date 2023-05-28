@@ -1,3 +1,10 @@
 # Prompt
 
-Written a cpp code that reads a given csv file and coverts its terms to words that are defined accordingly in my code.
+Implemented login,registration page using node.js and postgresql.
+
+Intialise using:
+npm init -y
+npm install express pg ejs
+
+run:
+node app.js
