@@ -34,7 +34,7 @@ app.post('/register', (req, res) => {
       console.error('Error registering user:', error);
       res.send('Error registering user');
     } else {
-      res.redirect('/dashboard');
+      res.redirect('/login');
     }
   });
 });
@@ -50,15 +50,22 @@ app.post('/login', (req, res) => {
     } else if (result.rows.length === 0) {
       res.send('Invalid credentials');
     } else {
-      res.redirect('/dashboard');
+        res.redirect(`/dashboard?username=${username}`);
     }
   });
 });
 
+
 app.get('/dashboard', (req, res) => {
   // Render the dashboard view
-  res.render('dashboard');
+  const username = req.query.username;
+  res.render('dashboard', { username });
 });
+
+app.get('/login', (req, res) => {
+    // Render the login view
+    res.render('login');
+  });
 
 // Start the server
 app.listen(3000, () => {
